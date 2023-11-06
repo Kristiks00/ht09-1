@@ -8,7 +8,7 @@ enum
     C = 12345,
     BASE = 10
 };
-const unsigned B = (unsigned)(1 << 31) - 1;
+const unsigned B = (unsigned) (1 << 31) - 1;
 
 RandomSource *
 destroy_linear(RandomSource *p)
@@ -26,9 +26,9 @@ next_linear(RandomSource *p)
 {
     long long val = (long long) (p->value * B);
     val &= B;
-    val = (A * val + C) & B; //new value in range[0, 2^31 - 1]
+    val = (A * val + C) & B; // new value in range[0, 2^31 - 1]
     double retval = (double) val;
-    retval /= B; //new value in range[0, 1]
+    retval /= B; // new value in range[0, 1]
     p->value = retval;
     return retval;
 }
@@ -42,9 +42,9 @@ random_linear_factory(char *buf)
         fprintf(stderr, "In function random_linear_factory: Cannot read seed\n");
         exit(1);
     }
-    val &= B; //lower 31 bits
+    val &= B; // lower 31 bits
     double ans = (double) val;
-    ans /= B; //value in range[0, 1]
+    ans /= B; // value in range[0, 1]
     RandomSource *p = calloc(1, sizeof(*p));
     p->value = ans;
     p->op = calloc(1, sizeof(*(p->op)));

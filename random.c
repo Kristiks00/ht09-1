@@ -29,7 +29,7 @@ next_random(RandomSource *p)
         exit(1);
     }
     p->value = (double) val;
-    p->value = (p->value < 0) ? -(p->value): p->value;
+    p->value = (p->value < 0) ? -(p->value) : p->value;
     p->value /= ULLONG_MAX;
     return p->value;
 }

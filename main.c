@@ -38,7 +38,7 @@ main(int argc, char *argv[])
         fprintf(stderr, "In function main: Cannot find function %s\n", funcname);
         exit(1);
     }
-    RandomSource *p = ((RandomSource * (*)(char *)) fabric)(argv[BUF]);
+    RandomSource *p = ((RandomSource * (*) (char *) ) fabric)(argv[BUF]);
     for (int i = 0; i < count; ++i) {
         printf("%.10g\n", p->op->next(p));
     }
